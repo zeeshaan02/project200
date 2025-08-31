@@ -1,6 +1,6 @@
 ---
 - name: Configure web server
-  hosts: web
+  hosts: ec2slave
   become: yes
   tasks:
     - name: Install Apache
