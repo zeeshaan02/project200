@@ -1,0 +1,22 @@
+---
+- name: Configure web server on Amazon Linux
+  hosts: ec2slave
+  become: yes
+
+  tasks:
+    - name: Install Apache (httpd)
+      package:
+        name: httpd
+        state: present
+
+    - name: Copy index.html to web root
+      copy:
+        src: index.html
+        dest: /var/www/html/index.html
+
+    - name: Start and enable Apache
+      service:
+        name: httpd
+        state: started
+        enabled: yes
+
